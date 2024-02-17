@@ -1,7 +1,12 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://0.0.0.0/0/googlebooks"
-);
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log("MongoDB successfully connected");
+      initializeTags(); 
+    })
+    .catch(err => console.log(err));
+
 
 module.exports = mongoose.connection;
