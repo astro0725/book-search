@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware, // If you're using authentication middleware
+  context: authMiddleware,
 });
 
 // apply the apollo gql middleware and set the path to /graphql
