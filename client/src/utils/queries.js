@@ -1,4 +1,5 @@
-// define the GET_ME query
+const { gql } = require('@apollo/client');
+
 export const GET_ME = gql`
   query me {
     me {
