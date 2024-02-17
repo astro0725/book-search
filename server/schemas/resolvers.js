@@ -30,7 +30,7 @@ const resolvers = {
     },
     // add a user
     addUser: async (_, { username, email, password }) => {
-      const user = await User.create(args);
+      const user = await User.create({ username, email, password });
       if (!user) {
         throw new Error('Something went wrong!');
       }
