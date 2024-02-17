@@ -81,7 +81,7 @@ const SearchBooks = () => {
     }
 
     try {
-      await saveBookMutation({
+      const { data, errors } = await saveBookMutation({
         variables: { bookData: { ...bookToSave } },
         context: {
           headers: {
@@ -89,9 +89,10 @@ const SearchBooks = () => {
           },
         },
       });
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
+  
+      if (errors) {
+        console.error('Error saving the book:', errors);
+        throw new Error('Error saving the book');
       }
 
       // if book successfully saves to user's account, save book id to state
